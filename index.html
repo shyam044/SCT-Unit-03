@@ -102,6 +102,29 @@ img {
   transform: scale(1);  /* zoom in effect */
   cursor: zoom-out;
 }
+/* Tip message styling */
+#image-tip {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 119, 204, 0.95);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+#image-tip.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 
   </style>
   
@@ -109,6 +132,9 @@ img {
 <body>
 
   <header>SCT Unit-03</header>
+  <!-- Tip Message -->
+<div id="image-tip">💡 Click on any image for better visualizing!</div>
+
   <div class="container">
     <h2>1)Access Control Mechanism and trusted objects:</h2>
     <ul>
@@ -650,6 +676,22 @@ img {
     lightbox.classList.remove("active");  // close on click anywhere
   });
 </script>
+<script>
+  // Show "Click on image" tip only once
+  window.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("imageTipShown")) {
+      const tip = document.getElementById("image-tip");
+      tip.classList.add("show");
+
+      setTimeout(() => {
+        tip.classList.remove("show");
+        tip.style.display = "none";
+        localStorage.setItem("imageTipShown", "true"); // remember not to show again
+      }, 10000); // 10 seconds
+    }
+  });
+</script>
 
 </body>
 </html>
+
