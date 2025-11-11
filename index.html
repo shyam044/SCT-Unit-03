@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCT Unit-03</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      page-break-after: always;
+    }
+    h2 { color: #0077cc; margin: 1.6rem 0 1rem; font-size: 1.4rem; }
+    ul, ol { margin: 0.3rem 0 1rem 0; padding-left: 18px; }
+    .nested { list-style: circle outside; padding-left: 16px; margin-top: 0.3rem; }
+    .shallow { list-style: square outside; padding-left: 14px; margin-top: 0.2rem; }
+    ol.roman { list-style-type: lower-roman; padding-left: 18px; }
+    ol.alpha { list-style-type: lower-alpha; padding-left: 18px; }
+    li { margin-bottom: 0.35rem; }
+    img { display:block; max-width:80%; height:auto; margin:1rem auto; border-radius:6px; }
+    @media (max-width: 768px) {
+      body { font-size: 0.95rem; }
+      header { font-size: 1.2rem; padding: 0.8rem 0.5rem; }
+      .container { padding: 0.9rem; margin: 1.2rem auto; }
+      h2 { font-size: 1.2rem; margin-top: 1.2rem; }
+      ul, ol { padding-left: 10px; margin-left: 0; }
+      .nested { padding-left: 10px; }
+      .shallow { padding-left: 8px; }
+      ol.roman, ol.alpha { padding-left: 10px; }
+    }
+ img:hover {
+  transform: scale(1.05);
+}
+img {
+  display: block;
+  max-width: 55%;       /* smaller width on laptop */
+  height: auto;         /* keep proportions natural */
+  max-height: 280px;    /* limit vertical height */
+  object-fit: contain;  /* ensures full image fits */
+  margin: 1rem auto;
+  border-radius: 6px;
+}
+
+
+    @media print { .container { page-break-after: always; } }
+    a:focus, button:focus, input:focus { outline: 3px solid rgba(0,119,204,0.35); outline-offset: 2px; }
+    /* Lightbox styles */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7); /* blurred/dark background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+#lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#lightbox img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+#lightbox.active img {
+  transform: scale(1);  /* zoom in effect */
+  cursor: zoom-out;
+}
+
+  </style>
+  
+</head>
+<body>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>1)Access Control Mechanism and trusted objects:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.18.25_997b18a5.jpg"/>
+      <li>It controls who can access the information and how they can use it</li>
+      <li>It includes:
+        <ol class="roman">
+          <li>subjects
+            <ul class="nested">
+              <li>User requests the system resources</li>
+            </ul>
+          </li>
+          <li>objects
+            <ul class="nested">
+              <li>Objects are the system resources like files, memory, etc...</li>
+            </ul>
+          </li>
+          <li>Access Rules
+            <ul class="nested">
+              <li>These are the rules for performing the operations like read, write and running the files</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+
+      <li>Managing Trusted Objects:
+        <ul class="nested">
+          <li>ACL (Access Control List)</li>
+          <li>RBAC (Role Based Access Control)</li>
+          <li>MAC (Mandatory Access Control)</li>
+          <li>DAC (Discretionary Access Control)</li>
+        </ul>
+      </li>
+
+      <li>Protection of Trusted objects:
+        <ul class="nested">
+          <li>Confidentiality</li>
+          <li>Integrity</li>
+          <li>Availability</li>
+          <li>Encryption</li>
+          <li>Authentication & Authorization</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>2)Memory Management in Secure Coding:</h2>
+    <ul>
+      <li>Memory Management is the process of managing the memory so that programs run smoothly</li>
+
+      <li>
+        <ol class="roman">
+          <li>Managed Code:
+            <ul class="nested">
+              <li>In Managed Code, Memory is controlled automatically</li>
+              <li>It removes the unwanted objects from the Memory</li>
+              <li>Example:
+                <ul class="shallow">
+                  <li>.NET, Java</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>Unmanaged code:
+            <ul class="nested">
+              <li>In Unmanaged code, Programmers are responsible for managing the memory</li>
+              <li>Example:
+                <ul class="shallow">
+                  <li>C, C++</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>Memory Safety:
+            <ul class="nested">
+              <li>Applications and Programs use only allocated memory</li>
+              <li>They protect the Memory from Unauthorized access</li>
+            </ul>
+          </li>
+
+          <li>Type Safety:
+            <ul class="nested">
+              <li>It ensures that a variable's value matches its data type</li>
+            </ul>
+          </li>
+
+          <li>ASLR:
+            <ul class="nested">
+              <li>Predictable Memory Usage can increase the Security risks</li>
+              <li>Use ASLR and other techniques to reduce these risks</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>3)Sandboxing:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.18.40_dda05193.jpg"/>
+      <li>Sandboxing is a technique to run programs safely without affecting the system</li>
+      <li>Advantages of sandboxing:
+        <ul class="nested">
+          <li>Independent
+            <ul class="shallow">
+              <li>A problem in one program doesn't affect another program</li>
+            </ul>
+          </li>
+          <li>Security
+            <ul class="shallow">
+              <li>Sandboxing protects the data from harmful code</li>
+            </ul>
+          </li>
+          <li>Web Browser Security
+            <ul class="shallow">
+              <li>Browser uses Sandboxing to prevent malicious activities</li>
+            </ul>
+          </li>
+          <li>controls attack
+            <ul class="shallow">
+              <li>If any attacks occur inside the sandbox, it controls the spread</li>
+            </ul>
+          </li>
+          <li>controls resources
+            <ul class="shallow">
+              <li>sandbox limits the usage of resources like files, networks or hardware</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>4)Error Handling Practices in Secure Coding</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.26.12_ee293910.jpg"/>
+      <li>Input Validation:
+        <ul class="nested">
+          <li>Program receives the data from various sources</li>
+          <li>If input data isn't validated properly, then it leads to a system crash</li>
+          <li>Proper Input Validation is the first line of defense</li>
+        </ul>
+      </li>
+
+      <li>Authentication and Authorization:
+        <ul class="nested">
+          <li>The process of verifying the identity of a user or device is called as Authentication</li>
+          <li>Only Authorized users can access the data</li>
+        </ul>
+      </li>
+
+      <li>Exception Handling:
+        <ul class="nested">
+          <li>Improper Exception Handling reveals sensitive information like file path, Database Names, etc...</li>
+          <li>Proper Exception Handling prevents Information Leakage</li>
+        </ul>
+      </li>
+
+      <li>Error Protection:
+        <ul class="nested">
+          <li>Applications run smoothly, even error occurs in the program</li>
+        </ul>
+      </li>
+
+      <li>Storing Errors Securely:
+        <ul class="nested">
+          <li>Application stores the error securely instead of showing errors to everyone</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>5)Static Testing vs Dynamic Testing:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.31.15_feb6802e.jpg"/>
+      <li>Static Testing:
+        <ul class="nested">
+          <li>It prevents defects before execution</li>
+          <li>Conducted at the early stage of software development</li>
+          <li>It is performed before code deployment</li>
+          <li>Code is not executed</li>
+          <li>It uses a checklist for the testing process</li>
+          <li>It takes less cost when compared to Dynamic Testing</li>
+          <li>It takes less time to complete</li>
+        </ul>
+      </li>
+
+      <li>Dynamic Testing:
+        <ul class="nested">
+          <li>It finds and fixes defects during execution</li>
+          <li>Conducted at a later stage of software development</li>
+          <li>It is performed after code deployment</li>
+          <li>Code is executed</li>
+          <li>It uses test cases for the testing process</li>
+          <li>It takes more cost when compared to Static Testing</li>
+          <li>It takes more time to complete</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>6)vulnerability scanning vs penetration testing</h2>
+    <ul>
+      <li>Penetration testing:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 00.41.18_48805975.jpg"/>
+          <li>It is for a critical system</li>
+          <li>Penetration testing is intrusive</li>
+          <li>It exploits a vulnerability</li>
+          <li>It is ideal for the physical Environment</li>
+          <li>It is performed by using Ethical Hackers</li>
+          <li>It is done after vulnerabilities are identified</li>
+          <li>It is more expensive when compared to Vulnerability Scanning</li>
+        </ul>
+      </li>
+
+      <li>Vulnerability Scanning:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 00.41.07_805ae102.jpg"/>
+          <li>It is for a non critical system</li>
+          <li>Vulnerability Scanning is non intrusive</li>
+          <li>It identifies vulnerability</li>
+          <li>It is ideal for a Lab Environment</li>
+          <li>It is performed by using tools</li>
+          <li>It is done before penetration testing</li>
+          <li>It is less expensive when compared to Penetration testing</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>7)Declarative and Programmatic Security</h2>
+    <ul>
+      <li>Declarative Security:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 00.45.50_155af8d3.jpg"/>
+          <li>Security rules are written outside the code</li>
+          <li>They are defined in configuration files</li>
+          <li>They are independent of code</li>
+          <li>It is managed by the system</li>
+          <li>Declarative Security is highly flexible</li>
+          <li>Declarative Security is Easy to Maintain</li>
+        </ul>
+      </li>
+
+      <li>Programmatic Security:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 00.46.05_8d7d06e6.jpg"/>
+          <li>Security rules written inside the code</li>
+          <li>They are defined in the Program code</li>
+          <li>They are dependent of code</li>
+          <li>It is managed by the developer</li>
+          <li>Programmatic Security is less Flexible</li>
+          <li>Declarative Security is complex to maintain</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>8)Input Validation:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.51.50_7e843be9.jpg"/>
+      <li>Program receives the data from various sources</li>
+      <li>If input data isn't validated properly, then it leads to a system crash</li>
+      <li>Proper Input Validation is the first line of defense</li>
+
+      <li>steps for Input Validation:
+        <ol class="roman">
+          <li>Data Type:
+            <ul class="nested">
+              <li>It checks whether the input field has the correct data type</li>
+              <li>Example:
+                <ul class="shallow">
+                  <li>Credit Card Number numeric format 16 digits</li>
+                  <li>Expiry date MM/YY format</li>
+                  <li>CVV 3 or 4 digits</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>Range and Length:
+            <ul class="nested">
+              <li>After checking the data type, verify the values that are within the range and length</li>
+              <li>Example:
+                <ul class="shallow">
+                  <li>Transaction Amount Max Transaction amount is based on the organization limits</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>Size:
+            <ul class="nested">
+              <li>Check the data size that must be not too small and not too large</li>
+            </ul>
+          </li>
+
+          <li>Remove Special Characters:
+            <ul class="nested">
+              <li>Remove Special characters that are used in the Injection Attacks</li>
+            </ul>
+          </li>
+
+          <li>Whitelist validation:
+            <ul class="nested">
+              <li>Allows only safe characters</li>
+            </ul>
+          </li>
+
+          <li>Blacklist validation:
+            <ul class="nested">
+              <li>Blocks dangerous characters</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>9)Session Management in Secure Coding:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 00.57.56_8f79bf06.jpg"/>
+      <li>When a user login to the application, a session is created</li>
+      <li>The Server assigns a unique session ID to the users</li>
+      <li>The session continues until the user logout from the application</li>
+
+      <li>Common Attacks:
+        <ol class="roman">
+          <li>Session Hijacking:
+            <ul class="nested">
+              <li>Attacker steals the session ID from the users and uses that session ID to act as the real user</li>
+            </ul>
+          </li>
+
+          <li>Man In The Middle Attack:
+            <ul class="nested">
+              <li>Man In The Middle Attack happens when an attacker intercepts the communication between the user and the Application</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+
+      <li>Steps:
+        <ol class="roman">
+          <li>Unique Session ID:
+            <ul class="nested">
+              <li>Create Unique Session ID to the user by using Secure Random Functions</li>
+              <li>Don't Show Session IDs publicly</li>
+            </ul>
+          </li>
+
+          <li>Regenerate Session ID:
+            <ul class="nested">
+              <li>After login to the Application, immediately generate a new session ID for the users</li>
+              <li>It prevents session fixation attacks</li>
+            </ul>
+          </li>
+
+          <li>Secure Cookies:
+            <ul class="nested">
+              <li>Use Secure Cookies like HTTPS, HTTPOnly to prevent security attacks</li>
+              <li>Instead of using HTTP, use HTTPS for extra security</li>
+              <li>HTTPS performs Encryption while transmitting the data</li>
+            </ul>
+          </li>
+
+          <li>Encryption:
+            <ul class="nested">
+              <li>The process of converting from plaintext to ciphertext by using a cryptographic algorithm is called as Encryption</li>
+              <li>Encrypt the session ID to maintain CIA</li>
+              <ul class="shallow">
+                <li>C stands for Confidentiality</li>
+                <li>I stands for Integrity</li>
+                <li>A stands for Availability</li>
+              </ul>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>10)HTTP vs HTTPS</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 01.00.43_c8086ab4.jpg"/>
+      <li>HTTP:
+        <ul class="nested">
+          <li>HTTP stands for Hypertext Transfer Protocol</li>
+          <li>It does not perform Encryption and data is sent in plaintext</li>
+          <li>It uses port 80 by default</li>
+          <li>It does not require a certificate</li>
+          <li>It works faster when compared to HTTPS</li>
+          <li>It starts with http://</li>
+          <ul class="shallow">
+            <li>Example:
+              <ul class="shallow">
+                <li>http://www.google.com//</li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </li>
+
+      <li>HTTPS:
+        <ul class="nested">
+          <li>HTTPS stands for Hypertext Transfer Protocol Secure</li>
+          <li>It performs Encryption and data is sent in ciphertext</li>
+          <li>It uses port 443 by default</li>
+          <li>It requires an SSL TLS certificate</li>
+          <li>It works more slowly when compared to HTTP</li>
+          <li>It starts with https://</li>
+          <ul class="shallow">
+            <li>Example:
+              <ul class="shallow">
+                <li>https://www.google.com//</li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>11)concurrency and configuration</h2>
+    <ul>
+      <li>Concurrency:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 01.21.55_a1c40b3d.jpg"/>
+          <li>The process of running multiple threads at the same time is called as Concurrency</li>
+          <li>If threads aren't handled properly, it can lead to a Race Condition</li>
+          <li>Uses Locks to avoid Race Condition</li>
+          <li>It keeps the data safe</li>
+          <ul class="shallow">
+            <li>Example:
+              <ul class="shallow">
+                <li>If two transactions happened at a time, then it shows the wrong balance</li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </li>
+
+      <li>Configuration:
+        <ul class="nested">
+          <img src="WhatsApp Image 2025-11-12 at 01.22.05_0299c201.jpg"/>
+          <li>The process of arranging the system or software is called as Configuration</li>
+          <li>If the settings are weak, it causes security risks</li>
+          <li>Uses Secure settings to provide security</li>
+          <li>It keeps the system safe</li>
+          <ul class="shallow">
+            <li>Example:
+              <ul class="shallow">
+                <li>If the server does not provide secure settings, Attackers easily access the data</li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <header>SCT Unit-03</header>
+  <div class="container">
+    <h2>12)Logging and Auditing:</h2>
+    <ul>
+      <img src="WhatsApp Image 2025-11-12 at 01.20.40_6adde3f6.jpg"/>
+      <li>Logging records important events and errors for finding and fixing the problems</li>
+      <li>Logs are stored in Databases and Databases easily generate an audit report</li>
+      <li>Databases like SQL Oracle have built in Auditing Features</li>
+
+      <li>Types of Logging:
+        <ul class="nested">
+          <li>There are mainly three types
+            <ol class="roman">
+              <li>Error Logging
+                <ul class="nested">
+                  <li>Error Logging records Errors and System Failure</li>
+                  <li>They find and fix the problem</li>
+                </ul>
+              </li>
+              <li>User Action Logging
+                <ul class="nested">
+                  <li>It records User Actions like reading writing creating and deleting</li>
+                  <li>They find and fix the problem</li>
+                </ul>
+              </li>
+              <li>Administrative Logging
+                <ul class="nested">
+                  <li>It records Administrative actions like creating users uploading data etc...</li>
+                  <li>They find and fix the problem</li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<!-- Lightbox container -->
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="Enlarged image">
+</div>
+
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll("img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;          // set clicked image
+      lightbox.classList.add("active");   // show overlay
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");  // close on click anywhere
+  });
+</script>
+
+</body>
+</html>
