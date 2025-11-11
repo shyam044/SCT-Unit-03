@@ -677,21 +677,17 @@ img {
   });
 </script>
 <script>
-  // Show "Click on image" tip only once
+  // Show message on each page load for 10 seconds
   window.addEventListener("DOMContentLoaded", () => {
-    if (!localStorage.getItem("imageTipShown")) {
-      const tip = document.getElementById("image-tip");
-      tip.classList.add("show");
+    const tip = document.getElementById("image-tip");
+    tip.classList.add("show"); // show message
 
-      setTimeout(() => {
-        tip.classList.remove("show");
-        tip.style.display = "none";
-        localStorage.setItem("imageTipShown", "true"); // remember not to show again
-      }, 10000); // 10 seconds
-    }
+    // Hide after 10 seconds
+    setTimeout(() => {
+      tip.classList.remove("show");
+    },5000);
   });
 </script>
 
 </body>
 </html>
-
